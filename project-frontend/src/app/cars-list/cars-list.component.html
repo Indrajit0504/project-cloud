@@ -1,0 +1,9 @@
+<h1>Cars</h1>
+
+<div *ngFor="let car of cars | async" style="width: 300px;">
+  <customer-details [car]='car'></customer-details>
+</div>
+
+<div>
+  <button type="button" class="button btn-danger" >Delete</button>
+</div>

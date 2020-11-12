@@ -21,7 +21,7 @@ export class CarsComponent implements OnInit {
   }
 
   getCars(): void {
-    this.carService.getCarsWithObservable().subscribe(cars => this.cars = cars);
+    this.carService.getCarsList().subscribe(cars => this.cars = cars);
   }
 
   onSelect(car: Car): void {
@@ -29,8 +29,5 @@ export class CarsComponent implements OnInit {
     this.selectedCar = car;
   }
 
-  rent(car: Car): void {
-    this.carService.rent(car).subscribe(c => this.rentedCar = c);
-  }
-
+  
 }

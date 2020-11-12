@@ -17,14 +17,29 @@ export class CarService {
 
   constructor(private http: HttpClient) {}
 
-  public getCarsWithObservable(): Observable<Car[]> {
-    return this.http.get<Car[]>("http://localhost:8080/cars");
+  private baseUrl = 'http://localhost:8080/cars';
+
+  getCar(plateNumber: string): Observable<Object>{
+    return this.http.get(`${this.baseUrl}/${plateNumber}`);
   }
 
-  public rent(car): Observable<any> {
-    car.rented = true;
-    console.warn("Request to: " + "http://localhost:8080/cars/"+car.plateNumber+"?louer=true");
-    return this.http.put("http://localhost:8080/cars/"+car.plateNumber+"?louer=true", null);
+  getCarsList(): Observable<any>{
+    return this.http.get(`${this.baseUrl}`);
   }
+
+  createCar(cars: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}` + `/create`, cars);
+  }
+
+  deleteCar(plateNumber: string): Observable<any>{
+    return this.http.delete(`${this.baseUrl}/${plateNumber}`, { responseType: 'text' });
+  }
+  
+
+
+
+
+  
+
 
 }

@@ -15,10 +15,17 @@ public class Car {
 
 	private long id;
 	private String plateNumber;
-	private boolean rented;
+	private boolean rented = false;
 	private String model;
 	private int price;
 	private int numberOfDays;
+
+	public Car(String plateNumber, String model, int price) {
+		this.plateNumber = plateNumber;
+		this.model = model;
+		this.price = price;
+	}
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -69,6 +76,9 @@ public class Car {
 	public void setNumberOfDays(int numberOfDays) {
 		this.numberOfDays = numberOfDays;
 	}
+
+	public Car() {}
+
 
 
 	@Override

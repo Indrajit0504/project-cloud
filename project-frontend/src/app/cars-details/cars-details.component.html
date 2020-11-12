@@ -1,0 +1,22 @@
+<div *ngIf="cars">
+    <div>
+      <label>Plate number: </label> {{car.plateNumber}}
+    </div>
+    <div>
+      <label>Car model: </label> {{car.model}}
+    </div>
+    <div>
+      <label>Price: </label> {{car.price}}
+    </div>
+    <div>
+        <label>Rented: </label> {{car.rented}}
+    </div>
+   
+    <span class="button is-small btn-primary" *ngIf='customer.active' (click)='updateActive(false)'>Inactive</span>
+   
+    <span class="button is-small btn-primary" *ngIf='!customer.active' (click)='updateActive(true)'>Active</span>
+   
+    <span class="button is-small btn-danger" (click)='deleteCar()'>Delete</span>
+   
+    <hr/>
+  </div>
