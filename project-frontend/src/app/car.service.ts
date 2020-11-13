@@ -34,6 +34,10 @@ export class CarService {
   deleteCar(plateNumber: string): Observable<any>{
     return this.http.delete(`${this.baseUrl}/${plateNumber}`, { responseType: 'text' });
   }
+  deleteAll(): Observable<Object> {
+    return this.http.delete(`${this.baseUrl}` + `/delete`, { responseType: 'text' });
+  }
+
   
 
 

@@ -38,7 +38,8 @@ public class CarRentalController {
 	@GetMapping("/cars")
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Iterable<Car> listOfCars(){
+	public Iterable<Car> getCarsList(){
+
 		return carRepository.findAll();
 	}
 
@@ -70,6 +71,17 @@ public class CarRentalController {
 	public ResponseEntity<String> deleteCar(@PathVariable(name="plateNumber") String plateNumber){
 
 		carRepository.deleteCarsByPlateNumber(plateNumber);
+		return new ResponseEntity<>("All customers have been deleted!", HttpStatus.OK);
+
+	}
+	// Delete car by plate number
+	@CrossOrigin(origins = "http://localhost:4200")
+	@DeleteMapping ("/cars/delete")
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public ResponseEntity<String> deleteAllCar(){
+		System.out.println("Delete All Customers...");
+		carRepository.deleteAll();
 		return new ResponseEntity<>("All customers have been deleted!", HttpStatus.OK);
 
 	}

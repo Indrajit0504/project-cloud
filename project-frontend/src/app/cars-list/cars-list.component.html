@@ -1,9 +1,17 @@
 <h1>Cars</h1>
 
-<div *ngFor="let car of cars | async" style="width: 300px;">
-  <customer-details [car]='car'></customer-details>
+<div *ngFor="let customer of customers | async" style="width: 300px;">
+  <cars-list [cars]='cars'></cars-list>
+</div>
+<div>
+<form (ngSubmit)="onSubmit()">
+  <button type="submit" class="button btn-danger">Delete All</button>
+</form>
+</div>
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="deleteCars()">All cars are deleted</button>
 </div>
 
+
 <div>
-  <button type="button" class="button btn-danger" >Delete</button>
-</div>
